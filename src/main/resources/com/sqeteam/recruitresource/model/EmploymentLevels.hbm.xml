@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.EmploymentLevels" table="employment_levels" catalog="recruitresource" optimistic-lock="version">
+        <id name="idLevelsOfEmployment" type="java.lang.Short">
+            <column name="idLevelsOfEmployment" />
+            <generator class="identity" />
+        </id>
+        <property name="employmentLevel" type="string">
+            <column name="employmentLevel" length="45" not-null="true">
+                <comment>To ascertain the nature of work experience, e.g. entry level; experienced/non-manager; supervisor of staff; manager; executive/senior executive</comment>
+            </column>
+        </property>
+        <set name="experienceses" table="experiences" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EmploymentLevels_idLevelsOfEmployment" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.Experiences" />
+        </set>
+    </class>
+</hibernate-mapping>

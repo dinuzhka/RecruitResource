@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.ProfessionalQualifications" table="professional_qualifications" catalog="recruitresource" optimistic-lock="version">
+        <id name="idProfessionalQualifications" type="java.lang.Integer">
+            <column name="idProfessionalQualifications" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="persons" class="com.sqeteam.recruitresource.model.Persons" fetch="select">
+            <column name="Persons_idUser" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sectors" class="com.sqeteam.recruitresource.model.Sectors" fetch="select">
+            <column name="Sectors_idSectors">
+                <comment>job sector if relevant</comment>
+            </column>
+        </many-to-one>
+        <property name="qualificationName" type="string">
+            <column name="qualificationName" length="100" not-null="true" />
+        </property>
+        <property name="otherSector" type="string">
+            <column name="otherSector" length="45">
+                <comment>alternative sector if one cannot be found in the drop-down based on the sectors table</comment>
+            </column>
+        </property>
+        <property name="awardingBody" type="string">
+            <column name="awardingBody" length="45">
+                <comment>if appropriate - e.g. institute of chartered surveyors</comment>
+            </column>
+        </property>
+        <property name="yearObtained" type="date">
+            <column name="yearObtained" length="10" />
+        </property>
+        <property name="result" type="string">
+            <column name="result" length="20">
+                <comment>if appropriate - some prof qualification may have classifications - e.g. the legal practice certificate: distinctinction, commendation, pass</comment>
+            </column>
+        </property>
+        <property name="verified" type="java.lang.Boolean">
+            <column name="verified" />
+        </property>
+        <property name="howVerified" type="string">
+            <column name="howVerified" length="45">
+                <comment>e.g. examining certificates or lists of members of professional bodies</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

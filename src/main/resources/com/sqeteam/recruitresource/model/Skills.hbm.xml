@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.Skills" table="skills" catalog="recruitresource" optimistic-lock="version">
+        <id name="idSkills" type="java.lang.Integer">
+            <column name="idSkills" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="persons" class="com.sqeteam.recruitresource.model.Persons" fetch="select">
+            <column name="Persons_idUser" not-null="true" />
+        </many-to-one>
+        <property name="skillName" type="string">
+            <column name="skillName" length="100" not-null="true">
+                <comment>from skills_lookup or chosen name - should be warned that may not be picked up by the business searches</comment>
+            </column>
+        </property>
+        <property name="skillLevel" type="string">
+            <column name="skillLevel" length="9">
+                <comment>subjective - but may be crossreferenced to to ER tests</comment>
+            </column>
+        </property>
+        <property name="verified" type="java.lang.Boolean">
+            <column name="verified" />
+        </property>
+        <property name="howVerified" type="string">
+            <column name="howVerified" length="45">
+                <comment>reference, ER test or other evidence of competence</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.JobTitles" table="job_titles" catalog="recruitresource" optimistic-lock="version">
+        <id name="idJobTitles" type="java.lang.Short">
+            <column name="idJobTitles" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sectors" class="com.sqeteam.recruitresource.model.Sectors" fetch="select">
+            <column name="Sectors_idSectors" />
+        </many-to-one>
+        <property name="jobTitle" type="string">
+            <column name="jobTitle" length="45" />
+        </property>
+        <set name="experienceses" table="experiences" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="JobTitles_idJobTitles" not-null="true" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.Experiences" />
+        </set>
+        <set name="personses" table="job_preferences" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="JobTitles_idJobTitles" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sqeteam.recruitresource.model.Persons">
+                <column name="person_idUser" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.Experiences" table="experiences" catalog="recruitresource" optimistic-lock="version">
+        <id name="idExperiences" type="java.lang.Integer">
+            <column name="idExperiences" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="employmentLevels" class="com.sqeteam.recruitresource.model.EmploymentLevels" fetch="select">
+            <column name="EmploymentLevels_idLevelsOfEmployment" />
+        </many-to-one>
+        <many-to-one name="jobTitles" class="com.sqeteam.recruitresource.model.JobTitles" fetch="select">
+            <column name="JobTitles_idJobTitles" not-null="true" />
+        </many-to-one>
+        <many-to-one name="persons" class="com.sqeteam.recruitresource.model.Persons" fetch="select">
+            <column name="Persons_idUser" not-null="true" />
+        </many-to-one>
+        <property name="dateStarted" type="date">
+            <column name="dateStarted" length="10" not-null="true">
+                <comment>this must be unique for each person as it is part the composite PK</comment>
+            </column>
+        </property>
+        <property name="dateFinished" type="date">
+            <column name="dateFinished" length="10" />
+        </property>
+        <property name="otherJobTitle" type="string">
+            <column name="otherJobTitle" length="45">
+                <comment>in case a suitable job-title is not found in the drop-down from the job_titles table</comment>
+            </column>
+        </property>
+        <property name="keyDuties" type="string">
+            <column name="keyDuties">
+                <comment>this could be searchable by keywork search!?</comment>
+            </column>
+        </property>
+        <property name="employerName" type="string">
+            <column name="employerName" length="45" />
+        </property>
+        <property name="verified" type="java.lang.Boolean">
+            <column name="verified" />
+        </property>
+        <property name="howVerified" type="string">
+            <column name="howVerified" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

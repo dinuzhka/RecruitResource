@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.Persons" table="persons" catalog="recruitresource" optimistic-lock="version">
+        <id name="idUser" type="int">
+            <column name="idUser" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="educationLevels" class="com.sqeteam.recruitresource.model.EducationLevels" fetch="select">
+            <column name="EducationLevels_idEducationLevel">
+                <comment>Highest education level achieved - from a drop-down</comment>
+            </column>
+        </many-to-one>
+        <many-to-one name="login" class="com.sqeteam.recruitresource.model.Login" fetch="select">
+            <column name="login_idlogin" not-null="true" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="title" length="10" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="firstName" length="45" not-null="true" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="middleName" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="lastName" length="45" not-null="true" />
+        </property>
+        <property name="addressLine1" type="string">
+            <column name="addressLine1" length="45" />
+        </property>
+        <property name="addressLine2" type="string">
+            <column name="addressLine2" length="45" />
+        </property>
+        <property name="town" type="string">
+            <column name="town" length="45" />
+        </property>
+        <property name="postcode" type="string">
+            <column name="postcode" length="10" />
+        </property>
+        <property name="alternativeEmail" type="string">
+            <column name="alternativeEmail" length="50">
+                <comment>alternative email to be used if any problem with the username (primary email)</comment>
+            </column>
+        </property>
+        <property name="personalUrl" type="string">
+            <column name="personalUrl" length="64">
+                <comment>increasingly common</comment>
+            </column>
+        </property>
+        <property name="photo" type="binary">
+            <column name="photo">
+                <comment>to be uploaded by the user</comment>
+            </column>
+        </property>
+        <property name="female" type="java.lang.Boolean">
+            <column name="female">
+                <comment>need to check whether there could be legal issues collecting/using this info</comment>
+            </column>
+        </property>
+        <property name="postcodeStart" type="string">
+            <column name="postcodeStart" length="10">
+                <comment>first part of the the persons address postcode for distance calculation</comment>
+            </column>
+        </property>
+        <property name="authorityToWorkStatement" type="string">
+            <column name="authorityToWorkStatement">
+                <comment>List restrictions on work, e.g. max 20 hours per week (some non-EU residents) E.g. if not null it should be displayed</comment>
+            </column>
+        </property>
+        <property name="contactPreference" type="string">
+            <column name="contactPreference" length="8">
+                <comment>mobile landline email1 (email) email2 (alternativeEmail)</comment>
+            </column>
+        </property>
+        <property name="noOfGcses" type="java.lang.Short">
+            <column name="noOfGcses" />
+        </property>
+        <property name="gcseEnglishGrade" type="string">
+            <column name="gcseEnglishGrade" length="2" />
+        </property>
+        <property name="gcseMathsGrade" type="string">
+            <column name="gcseMathsGrade" length="2" />
+        </property>
+        <property name="fiveOrMoreGcses" type="java.lang.Boolean">
+            <column name="fiveOrMoreGcses" />
+        </property>
+        <property name="noOfAlevels" type="java.lang.Short">
+            <column name="noOfAlevels">
+                <comment>entered by the user - could be checked against the number in the Alevels table. AS level is 0.5. What about International Baccalaureate, French
+                Baccalaureate,European Baccalaureate,Scottish Highers etc...</comment>
+            </column>
+        </property>
+        <property name="ucasPoints" type="java.lang.Short">
+            <column name="ucasPoints">
+                <comment>needed?</comment>
+            </column>
+        </property>
+        <property name="studentStatus" type="string">
+            <column name="studentStatus" length="13">
+                <comment>if a student then the details of the course should be stored in the Educational_qualifications table</comment>
+            </column>
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="16" />
+        </property>
+        <property name="landline" type="string">
+            <column name="landline" length="16" />
+        </property>
+        <property name="dob" type="date">
+            <column name="dob" length="10">
+                <comment>date of birth - may be required by some employes but cannot be searched on</comment>
+            </column>
+        </property>
+        <property name="penaltyPoints" type="java.lang.Short">
+            <column name="penaltyPoints">
+                <comment>on the UK driving license - see http://www.direct.gov.uk/en/Motoring/DriverLicensing/EndorsementsAndDisqualifications/DG_4022550</comment>
+            </column>
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="45" />
+        </property>
+        <set name="skillses" table="skills" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persons_idUser" not-null="true" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.Skills" />
+        </set>
+        <set name="refereeses" table="referees" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persons_idUser" not-null="true" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.Referees" />
+        </set>
+        <set name="experienceses" table="experiences" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persons_idUser" not-null="true" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.Experiences" />
+        </set>
+        <set name="professionalQualificationses" table="professional_qualifications" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persons_idUser" not-null="true" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.ProfessionalQualifications" />
+        </set>
+        <set name="educationalQualificationses" table="educational_qualifications" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Persons_idUser" not-null="true" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.EducationalQualifications" />
+        </set>
+        <set name="jobTitleses" table="job_preferences" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="person_idUser" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.sqeteam.recruitresource.model.JobTitles">
+                <column name="JobTitles_idJobTitles" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

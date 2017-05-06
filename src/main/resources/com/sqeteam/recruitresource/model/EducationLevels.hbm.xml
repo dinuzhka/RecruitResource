@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.EducationLevels" table="education_levels" catalog="recruitresource" optimistic-lock="version">
+        <id name="idEducationLevel" type="java.lang.Short">
+            <column name="idEducationLevel" />
+            <generator class="identity" />
+        </id>
+        <property name="educationLevel" type="string">
+            <column name="educationLevel" length="100" not-null="true">
+                <comment>O-Level A-Level HND Degree MSc PhD</comment>
+            </column>
+        </property>
+        <set name="educationalQualificationses" table="educational_qualifications" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EducationLevels_idEducationLevel" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.EducationalQualifications" />
+        </set>
+        <set name="personses" table="persons" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EducationLevels_idEducationLevel">
+                    <comment>Highest education level achieved - from a drop-down</comment>
+                </column>
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.Persons" />
+        </set>
+    </class>
+</hibernate-mapping>

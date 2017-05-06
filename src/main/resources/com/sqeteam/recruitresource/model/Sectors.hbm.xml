@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2017 10:46:06 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.sqeteam.recruitresource.model.Sectors" table="sectors" catalog="recruitresource" optimistic-lock="version">
+        <id name="idSectors" type="java.lang.Short">
+            <column name="idSectors" />
+            <generator class="identity" />
+        </id>
+        <property name="sectorTitle" type="string">
+            <column name="sectorTitle" length="45">
+                <comment>e.g. from http://www.reed.co.uk/</comment>
+            </column>
+        </property>
+        <set name="jobTitleses" table="job_titles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Sectors_idSectors" />
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.JobTitles" />
+        </set>
+        <set name="professionalQualificationses" table="professional_qualifications" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Sectors_idSectors">
+                    <comment>job sector if relevant</comment>
+                </column>
+            </key>
+            <one-to-many class="com.sqeteam.recruitresource.model.ProfessionalQualifications" />
+        </set>
+    </class>
+</hibernate-mapping>
