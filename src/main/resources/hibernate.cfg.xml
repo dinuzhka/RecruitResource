@@ -6,16 +6,17 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/recruitresource?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <mapping resource="com/sqeteam/recruitresource/model/ProfessionalQualifications.hbm.xml"/>
-    <mapping resource="com/sqeteam/recruitresource/model/Sectors.hbm.xml"/>
-    <mapping resource="com/sqeteam/recruitresource/model/Persons.hbm.xml"/>
-    <mapping resource="com/sqeteam/recruitresource/model/Experiences.hbm.xml"/>
-    <mapping resource="com/sqeteam/recruitresource/model/Referees.hbm.xml"/>
+    <property name="hibernate.connection.password">1234567</property>
     <mapping resource="com/sqeteam/recruitresource/model/EducationLevels.hbm.xml"/>
-    <mapping resource="com/sqeteam/recruitresource/model/Login.hbm.xml"/>
-    <mapping resource="com/sqeteam/recruitresource/model/EmploymentLevels.hbm.xml"/>
+    <mapping resource="com/sqeteam/recruitresource/model/Referees.hbm.xml"/>
+    <mapping resource="com/sqeteam/recruitresource/model/Persons.hbm.xml"/>
     <mapping resource="com/sqeteam/recruitresource/model/JobTitles.hbm.xml"/>
+    <mapping resource="com/sqeteam/recruitresource/model/Login.hbm.xml"/>
     <mapping resource="com/sqeteam/recruitresource/model/EducationalQualifications.hbm.xml"/>
+    <mapping resource="com/sqeteam/recruitresource/model/ProfessionalQualifications.hbm.xml"/>
     <mapping resource="com/sqeteam/recruitresource/model/Skills.hbm.xml"/>
+    <mapping resource="com/sqeteam/recruitresource/model/Sectors.hbm.xml"/>
+    <mapping resource="com/sqeteam/recruitresource/model/Experiences.hbm.xml"/>
+    <mapping resource="com/sqeteam/recruitresource/model/EmploymentLevels.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

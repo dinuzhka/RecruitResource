@@ -6,10 +6,11 @@
 package com.sqeteam.recruitresource.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.sqeteam.recruitresource.datacontroller.LoginDataController;
 
 /**
  *
- * @author Deshika
+ * @author Dinuzhka
  */
 public class LoginAction extends ActionSupport {
 
@@ -34,15 +35,21 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-//        return super.execute(); //To change body of generated methods, choose Tools | Templates.
-
-        if (this.email.equals("deshika")
-                && this.password.equals("1234")) {
-            return "success";
-        } else {
-            addActionError(getText("error.login"));
-            return "error";
-        }
+        return super.execute(); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public String login() {
+        LoginDataController ldc = new LoginDataController();
+        if (ldc.isValidCredentials(getEmail(), getPassword())) {
+            return "success";
+        }
+        addActionError("Invalid credentials. Please check again and retry");
+        return "fail";
+    }
+    
+    public String goLogin(){
+        return "success";
+    }
+
 
 }
