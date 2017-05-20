@@ -23,4 +23,15 @@
       <put-attribute name="title"  value="Home"/>
       <put-attribute name="body"   value="/index.jsp"/>      
    </definition>
+   
+   <definition name="search" extends="baseLayout">
+      <put-attribute name="title"  value="Search"/>
+      <put-attribute name="body"   value="/search.jsp"/>      
+   </definition>
+   
+   <definition name="searchresults" extends="baseLayout">
+      <put-attribute name="title"  value="Search"/>
+      <put-attribute name="body"   value="/searchresults.jsp"/>      
+   </definition>
+   
 </tiles-definitions>

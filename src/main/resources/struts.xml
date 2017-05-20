@@ -20,7 +20,8 @@
       
       
         <action name="Home" method="goHome" class="com.sqeteam.recruitresource.action.HomeAction">
-            <result name="success" type="tiles">home</result>
+            <result name="success_user" type="tiles">home</result>
+            <result name="success_company" type="tiles">search</result>
             <result name="fail" type="tiles">login</result>
             <result name="input" type="tiles">login</result>
         </action>
@@ -67,6 +68,16 @@
         <action name="Logout" method="logout" class="com.sqeteam.recruitresource.action.HomeAction">
             <result name="success" type="redirectAction">Home</result>
             <result name="input" type="redirectAction">home</result>
+        </action>
+        
+        
+        
+        <action name="Search" method="search" class="com.sqeteam.recruitresource.action.SearchAction">
+            <result name="success" type="tiles">search</result>
+        </action>
+        
+        <action name="DoSearch" method="doSearch" class="com.sqeteam.recruitresource.action.SearchAction">
+            <result name="success" type="tiles">searchresults</result>
         </action>
     </package>
 </struts>

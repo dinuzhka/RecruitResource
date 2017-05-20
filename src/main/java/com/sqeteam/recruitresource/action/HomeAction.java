@@ -100,7 +100,7 @@ public class HomeAction extends ActionSupport {
                         i++;
                     }
                 }
-                return "success";
+                return "success_"+getPerson().getType();
             }
         } catch (Exception e) {
             e.printStackTrace();

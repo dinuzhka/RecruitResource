@@ -50,14 +50,14 @@ public class Persons implements java.io.Serializable {
     public Persons() {
     }
 
-    public Persons(Login login, String firstName, String lastName,String type) {
+    public Persons(Login login, String firstName, String lastName, String type) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.type = type;
     }
 
-    public Persons(int idUser, Login login, String firstName, String lastName,String type) {
+    public Persons(int idUser, Login login, String firstName, String lastName, String type) {
         this.idUser = idUser;
         this.login = login;
         this.firstName = firstName;
@@ -392,4 +392,14 @@ public class Persons implements java.io.Serializable {
         this.jobTitleses = jobTitleses;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        boolean sameSame = false;
+
+        if (object != null && object instanceof Persons) {
+            sameSame = this.idUser == ((Persons) object).idUser;
+        }
+
+        return sameSame;
+    }
 }
