@@ -7,10 +7,12 @@ package com.sqeteam.recruitresource.datacontroller;
 
 import com.sqeteam.recruitresource.model.HibernateUtil;
 import com.sqeteam.recruitresource.model.Login;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -48,13 +50,31 @@ public class LoginDataController {
         return isValid;
     }
 
+    public Login GetLogin(String email) {
+        Login login=null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            String hql = "FROM Login WHERE email=:email ";
+            Query query = session.createQuery(hql);
+            query.setParameter("email", email);
+            login = (Login)query.uniqueResult();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            session.close();
+        }
+        return login;
+
+    }
+
     public int addLogin(Login login) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             session.save(login);
-            
+
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -66,4 +86,5 @@ public class LoginDataController {
         }
         return login.getIdlogin();
     }
+
 }

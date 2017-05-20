@@ -155,7 +155,7 @@
                                         </div><!-- /.widget-main -->
 
                                         <div class="toolbar center">
-                                            <a href="#" data-target="#login-box" class="back-to-login-link">
+                                            <a href="Login" data-target="#login-box" class="back-to-login-link">
                                                 Back to login
                                                 <i class="ace-icon fa fa-arrow-right"></i>
                                             </a>

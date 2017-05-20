@@ -13,7 +13,7 @@
             <result name="success" type="tiles">login</result>
         </action>
         <action name="DoLogin" method="login" class="com.sqeteam.recruitresource.action.LoginAction">
-            <result name="success" type="tiles">home</result>
+            <result name="success" type="redirectAction">Home</result>
             <result name="fail" type="tiles">login</result>
             <result name="input" type="tiles">login</result>
         </action>
@@ -29,9 +29,44 @@
             <result name="success" type="tiles">register</result>
         </action>
         <action name="DoRegister" method="register" class="com.sqeteam.recruitresource.action.RegisterAction">
-            <result name="success" type="tiles">home</result>
+            <result name="success" type="redirectAction">Home</result>
             <result name="fail" type="tiles">register</result>
             <result name="input" type="tiles">register</result>
+        </action>
+        
+        
+        <action name="AddEducationalQualification" method="addEducationalQualification" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="tiles">home</result>
+        </action>
+        <action name="AddProfessionalQualification" method="addProfessionalQualification" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="tiles">home</result>
+        </action>
+        <action name="AddExperience" method="addExperience" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="tiles">home</result>
+        </action>
+        <action name="SaveJobPreferences" method="addJobPreferences" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="tiles">home</result>
+        </action>
+        <action name="AddSkill" method="addSkill" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="tiles">home</result>
+        </action>
+        
+        <action name="UpdateUserProfile" method="updateUserProfile" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="tiles">home</result>
+        </action>
+        <action name="AddReferee" method="addReferee" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="tiles">home</result>
+        </action>
+        <action name="Logout" method="logout" class="com.sqeteam.recruitresource.action.HomeAction">
+            <result name="success" type="redirectAction">Home</result>
+            <result name="input" type="redirectAction">home</result>
         </action>
     </package>
 </struts>

@@ -254,7 +254,7 @@
                                         </div>
 
                                         <div class="toolbar center">
-                                            <a href="#" data-target="#login-box" class="back-to-login-link">
+                                            <a href="Login" class="back-to-login-link">
                                                 <i class="ace-icon fa fa-arrow-left"></i>
                                                 Back to login
                                             </a>

@@ -5,8 +5,11 @@
  */
 package com.sqeteam.recruitresource.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.sqeteam.recruitresource.datacontroller.LoginDataController;
+import com.sqeteam.recruitresource.datacontroller.PersonDataController;
+import com.sqeteam.recruitresource.model.Login;
 
 /**
  *
@@ -40,16 +43,22 @@ public class LoginAction extends ActionSupport {
 
     public String login() {
         LoginDataController ldc = new LoginDataController();
+
         if (ldc.isValidCredentials(getEmail(), getPassword())) {
+            Login login = ldc.GetLogin(getEmail());
+            ActionContext.getContext().getSession().put("logged_user", login);
+
+            PersonDataController pdc = new PersonDataController();
+            ActionContext.getContext().getSession().put("logged_person", pdc.getPerson(login.getEmail()));
+
             return "success";
         }
         addActionError("Invalid credentials. Please check again and retry");
         return "fail";
     }
-    
-    public String goLogin(){
+
+    public String goLogin() {
         return "success";
     }
-
 
 }

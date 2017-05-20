@@ -7,6 +7,8 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/recruitresource?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">1234567</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    
     <mapping resource="com/sqeteam/recruitresource/model/EducationLevels.hbm.xml"/>
     <mapping resource="com/sqeteam/recruitresource/model/Referees.hbm.xml"/>
     <mapping resource="com/sqeteam/recruitresource/model/Persons.hbm.xml"/>

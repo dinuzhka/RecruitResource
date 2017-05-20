@@ -11,8 +11,8 @@
         <many-to-one name="educationLevels" class="com.sqeteam.recruitresource.model.EducationLevels" fetch="select">
             <column name="EducationLevels_idEducationLevel" />
         </many-to-one>
-        <many-to-one name="persons" class="com.sqeteam.recruitresource.model.Persons" fetch="select">
-            <column name="Persons_idUser" not-null="true" />
+        <many-to-one name="persons" class="com.sqeteam.recruitresource.model.Persons"  fetch="select">
+            <column name="Persons_idUser" not-null="true"  />
         </many-to-one>
         <property name="qualificationType" type="string">
             <column name="qualificationType" length="16" not-null="true">
