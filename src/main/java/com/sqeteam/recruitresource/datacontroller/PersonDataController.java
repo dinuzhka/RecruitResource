@@ -77,7 +77,6 @@ public class PersonDataController {
             }
         } catch (HibernateException e) {
             e.printStackTrace();
-            throw e;
         } finally {
             session.close();
         }
