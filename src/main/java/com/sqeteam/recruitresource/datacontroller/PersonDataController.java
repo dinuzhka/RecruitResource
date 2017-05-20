@@ -75,8 +75,8 @@ public class PersonDataController {
             while(it.hasNext()){
                 levels.add(it.next());
             }
-        } catch (HibernateException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            return levels;
         } finally {
             session.close();
         }
