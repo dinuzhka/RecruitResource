@@ -22,8 +22,8 @@
         <action name="Home" method="goHome" class="com.sqeteam.recruitresource.action.HomeAction">
             <result name="success_user" type="tiles">home</result>
             <result name="success_company" type="tiles">search</result>
-            <result name="fail" type="tiles">login</result>
-            <result name="input" type="tiles">login</result>
+            <result name="fail" type="redirect">Login</result>
+            <result name="input" type="redirect">Login</result>
         </action>
       
         <action name="Register" method="goRegister" class="com.sqeteam.recruitresource.action.RegisterAction">
