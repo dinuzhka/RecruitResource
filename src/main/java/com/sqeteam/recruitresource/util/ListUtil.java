@@ -18,12 +18,23 @@ public class ListUtil {
 
     public static List<Persons> intersection(List<Persons> list1, List<Persons> list2) {
         List<Persons> list = new ArrayList<Persons>();
-
         for (Persons p : list1) {
             if (list2.contains(p)) {
                 list.add(p);
             }
         }
+        return list;
+    }
+
+    public static List<Persons> distinct(List<Persons> list1) {
+        List<Persons> list = new ArrayList<Persons>();
+
+        for (Persons p : list1) {
+            if (!list.contains(p)) {
+                list.add(p);
+            }
+        }
+
         return list;
     }
 }

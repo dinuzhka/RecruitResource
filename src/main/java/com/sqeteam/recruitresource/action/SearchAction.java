@@ -12,8 +12,10 @@ import com.sqeteam.recruitresource.model.EmploymentLevels;
 import com.sqeteam.recruitresource.model.JobTitles;
 import com.sqeteam.recruitresource.model.Persons;
 import com.sqeteam.recruitresource.model.Sectors;
+import com.sqeteam.recruitresource.search.EducationSearch;
 import com.sqeteam.recruitresource.search.ISearch;
 import com.sqeteam.recruitresource.search.SectorSearch;
+import com.sqeteam.recruitresource.search.TitleSearch;
 import com.sqeteam.recruitresource.search.TotalPersonSearch;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,7 @@ public class SearchAction extends ActionSupport {
     
     private Sectors searchSector;
     private int[] searchTitles;
+    private int[] searchEducation;
 
     public String search() {
         StaticDataController sdc = new StaticDataController();
@@ -55,6 +58,8 @@ public class SearchAction extends ActionSupport {
         List<ISearch> exec=new ArrayList<>();
         exec.add(new TotalPersonSearch());
         exec.add(new SectorSearch(searchSector.getIdSectors()));
+        exec.add(new TitleSearch(searchTitles));
+        exec.add(new EducationSearch(searchEducation));
         return exec;
     }
     
@@ -155,6 +160,20 @@ public class SearchAction extends ActionSupport {
      */
     public void setSearchResult(List<Persons> searchResult) {
         this.searchResult = searchResult;
+    }
+
+    /**
+     * @return the searchEducation
+     */
+    public int[] getSearchEducation() {
+        return searchEducation;
+    }
+
+    /**
+     * @param searchEducation the searchEducation to set
+     */
+    public void setSearchEducation(int[] searchEducation) {
+        this.searchEducation = searchEducation;
     }
 
 
